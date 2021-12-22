@@ -17,7 +17,8 @@ var tempFilename string
 var omitName string
 
 func main() {
-
+	//version, err := git.BinVersion()
+	//fmt.Println(version)
 	flag.Usage = func() {
 		fmt.Printf("Zip Dir \n\nUSAGE:\n%s <filename> [OPTIONS]\n\nOPTIONS:\n", os.Args[0])
 		flag.PrintDefaults()
