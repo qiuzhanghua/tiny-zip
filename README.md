@@ -1,7 +1,7 @@
 # Tiny Zip
 
 ## Build
-go build -o tiny-zip
+go build
 
 ## Usage
 ```bash
