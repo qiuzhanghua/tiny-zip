@@ -44,6 +44,7 @@ func main() {
 		fmt.Println(err)
 		os.Exit(1)
 	}
+	file.Close()
 	zipFilename = os.Args[1]
 	err = os.Rename(tempFilename, zipFilename)
 	if err != nil {
