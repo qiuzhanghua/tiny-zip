@@ -17,8 +17,6 @@ var tempFilename string
 var omitName string
 
 func main() {
-	//version, err := git.BinVersion()
-	//fmt.Println(version)
 	flag.Usage = func() {
 		fmt.Printf("Zip Dir \n\nUSAGE:\n%s <filename> [OPTIONS]\n\nOPTIONS:\n", os.Args[0])
 		flag.PrintDefaults()
@@ -29,7 +27,15 @@ func main() {
 
 	if len(os.Args) <= 1 {
 		flag.Usage()
-		os.Exit(1)
+		os.Exit(0)
+	}
+	if strings.HasSuffix(os.Args[1], "help") {
+		flag.Usage()
+		os.Exit(0)
+	}
+	if strings.HasSuffix(os.Args[1], "version") {
+		fmt.Printf("tiny-unzip %s (%s %s)\n", AppVersion, AppRevision, AppBuildDate)
+		os.Exit(0)
 	}
 
 	file, err := ioutil.TempFile(".", "*.zip")

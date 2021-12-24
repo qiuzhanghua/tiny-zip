@@ -1,9 +1,25 @@
 # Tiny Zip
 
-## Build
+## Prerequisite
+```bash
+go install github.com/qiuzhanghua/autotag@latest
+```
+
+## build
+```bash
+autotag write
 go build
+```
 
 ## Usage
+```bash
+tiny-zip version
+```
+or
+```bash
+tiny-zip help
+```
+or
 ```bash
 tiny-zip <name>.zip --dir .
 ```
