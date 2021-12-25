@@ -34,7 +34,7 @@ func main() {
 		os.Exit(0)
 	}
 	if strings.HasSuffix(os.Args[1], "version") {
-		fmt.Printf("tiny-unzip %s (%s %s)\n", AppVersion, AppRevision, AppBuildDate)
+		fmt.Printf("tiny-zip %s (%s %s)\n", AppVersion, AppRevision, AppBuildDate)
 		os.Exit(0)
 	}
 
