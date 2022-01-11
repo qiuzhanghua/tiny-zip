@@ -23,3 +23,4 @@ post:
 
 clean:
 	rm tiny-zip*.*
+	rm tiny-zip

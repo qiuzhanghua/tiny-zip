@@ -43,6 +43,12 @@ func main() {
 		fmt.Println(err)
 		os.Exit(1)
 	}
+	defer func(file *os.File) {
+		err := file.Close()
+		if err != nil {
+			fmt.Println(err)
+		}
+	}(file)
 	tempFilename = file.Name()
 	var index = strings.LastIndex(tempFilename, string(filepath.Separator))
 	omitName = tempFilename[index+1:]
@@ -50,7 +56,6 @@ func main() {
 		fmt.Println(err)
 		os.Exit(1)
 	}
-	file.Close()
 	zipFilename = os.Args[1]
 	err = os.Rename(tempFilename, zipFilename)
 	if err != nil {
@@ -65,10 +70,20 @@ func ZipDir(zipFile, dir string) error {
 	if err != nil {
 		return err
 	}
-	defer f.Close()
+	defer func(f *os.File) {
+		err := f.Close()
+		if err != nil {
+			fmt.Println(err)
+		}
+	}(f)
 
 	writer := zip.NewWriter(f)
-	defer writer.Close()
+	defer func(writer *zip.Writer) {
+		err := writer.Close()
+		if err != nil {
+			fmt.Println(err)
+		}
+	}(writer)
 
 	// 2. Go through all the files of the dir
 	return filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
@@ -112,7 +127,12 @@ func ZipDir(zipFile, dir string) error {
 		if err != nil {
 			return err
 		}
-		defer f.Close()
+		defer func(f *os.File) {
+			err := f.Close()
+			if err != nil {
+				fmt.Println(err)
+			}
+		}(f)
 
 		_, err = io.Copy(headerWriter, f)
 		return err
