@@ -12,7 +12,7 @@ build-linux:
 
 build-darwin:
 	CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -o tiny-zip_`autotag current`_darwin_amd64
-	CGO_ENABLED=0 GOOS=darwin GOARCH=arm64 go build -o tiny-zip_`autotag current`-darwin-arm64
+	CGO_ENABLED=0 GOOS=darwin GOARCH=arm64 go build -o tiny-zip_`autotag current`_darwin_arm64
 
 build-windows:
 	CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o tiny-zip_`autotag current`_windows_amd64.exe
